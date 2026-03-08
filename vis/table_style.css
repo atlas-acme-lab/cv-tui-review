@@ -1,0 +1,349 @@
+:root {
+    --gutter-A: 1rem;
+    --code-width: 12px;
+  }
+  
+  body {
+    font-family: helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: auto; /* Allow horizontal scrolling on the body */
+    overflow-y: hidden;
+  }
+  
+  #vis-container {
+    top: 0;
+    left: 0;
+    display: inline-block; /* Prevent breaking */
+    white-space: nowrap; /* Prevent line breaks */
+    overflow-x: auto; /* Allow horizontal scrolling */
+    height: 100vh;
+    min-width: 100vw;
+  }
+  
+  #vis-labels {
+    position: sticky;
+    top: 0;
+    margin: 0 30px 10px 30px;
+    padding-top: 30px;
+    z-index: 10;
+    font-size: 0.9em;
+    white-space: nowrap; /* Prevent line breaks */
+    display: flex;
+    align-items: bottom;
+    background: rgba(255, 255, 255, 0.7);
+  }
+  
+  #vis-labels div {
+    position: relative;
+    display: inline-block; /* Keep div inline with its children */
+    align-items: bottom;
+    min-height: 1px;
+    overflow: show;
+  }
+  
+  #vis-labels div span {
+    position: absolute;
+    display: block;
+    height: 1em;
+    bottom: 0;
+    cursor: pointer;
+  }
+  
+  #vis-labels .label-cat {
+    width: fit-content;
+    border-left: 1px solid black;
+    display: flex;
+    align-items: bottom;
+    height: 140px;
+    margin-top: 0px;
+  }
+  
+  #vis-labels .label-cat:nth-child(odd) {
+    height: 125px;
+    margin-top: 15px;
+  }
+  
+  #vis-labels .label {
+    position: relative;
+    width: var(--code-width);
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    transform-origin: 44% 50%;
+    cursor: pointer;
+  }
+  
+  #vis-labels .label span {
+    height: 100%;
+  }
+  
+  #vis-labels .label-cat-title {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    overflow: show;
+    z-index: 1;
+  }
+  
+  #vis-labels .label.code-text {
+    transform: none;
+  }
+  
+  .sort-active {
+    font-weight: bold;
+  }
+  
+  .sort-active span::after {
+    content: " ■";
+  }
+  
+  #vis-dist {
+    position: sticky;
+    top: 190px;
+    margin: 10px 30px 10px 30px;
+    z-index: 11;
+    font-size: 0.9em;
+    white-space: nowrap; /* Prevent line breaks */
+    display: flex;
+    align-items: bottom;
+  }
+  
+  #vis-padding {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  #vis-dist .dist-group {
+    width: fit-content;
+    border-left: 1px solid black;
+    display: flex;
+    align-items: bottom;
+    height: 60px;
+  }
+  
+  #vis-dist .dist {
+    position: relative;
+    width: var(--code-width);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transform-origin: 50% 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
+    background: #CCC;
+  }
+  
+  #vis-dist .dist.code-text {
+    background: none;
+  }
+  
+  .item .code-text {
+    font-size: 0.9em;
+    /* font-family: "Inconsolata", monospace; */
+    /* font-stretch: condensed; */
+    padding: 0 0.4em 0 0.2em;
+    box-sizing: border-box;
+  }
+  
+  .item .code-text span {
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .code-text-PhysicalMaterials {
+    width: 7rem !important;
+  }
+  
+  .code-text-SoftwareArchitecture {
+    width: 7rem !important;
+  }
+  
+  .code-text-ResearchGoal {
+    width: 7rem !important;
+  }
+  
+  #vis {
+    margin: 0 30px;
+    display: inline-block; /* Prevent breaking */
+    white-space: nowrap; /* Prevent line breaks */
+  }
+  
+  .item {
+    position: relative;
+    clear: both;
+    margin: 0;
+    padding: 0;
+    height: 16px;
+    width: fit-content;
+    overflow: hidden;
+    background: #FFFFFF;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .item:nth-child(odd) {
+    background: #F6F6F6;
+  }
+  
+  .item:hover {
+    background: #DDDDDD;
+  }
+  
+  .item.active {
+    background: #BBBBBB;
+  }
+  
+  .item div {
+    position: relative;
+    display: inline-flex; /* Use inline-flex to prevent breaking */
+    overflow: hidden;
+    white-space: nowrap;
+    align-items: center;
+    flex-shrink: 0; /* Prevent shrinking */
+    height: 100%;
+  }
+  
+  .title {
+    width: 200px;
+    margin-right: var(--gutter-A);
+  }
+  
+  .authors {
+    width: 100px;
+    margin-right: var(--gutter-A);
+  }
+  
+  .year {
+    width: 30px;
+    margin-right: var(--gutter-A);
+  }
+  
+  .venue {
+    width: 70px;
+    margin-right: var(--gutter-A);
+  }
+
+  .label-data {
+    width: 50px;
+    margin-right: var(--gutter-A);
+  }
+  
+  .item .code-cat {
+    height: 100%;
+    background: none;
+    border: 0;
+    border-left: 1px solid black;
+    flex-shrink: 0; /* Prevent shrinking */
+  }
+  
+  .item .code {
+    width: var(--code-width);
+    height: 100%;
+    background: none;
+  }
+  
+  .item.case .code-true {
+    background: blue;
+  }
+  
+  .item.sys .code-true {
+    background: red;
+  }
+  
+  .item.case-sys .code-true {
+    background: purple;
+  }
+  
+  .item .code-true {
+    opacity: 0.3;
+  }
+  
+  .item:hover .code-true {
+    opacity: 0.5;
+  }
+  
+  .item.active .code-true {
+    opacity: 0.7;
+  }
+  
+  
+  #modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 50px calc(50vw - min(400px, 50vw));
+    padding: 5em;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: min(800px, 100vw);
+    height: fit-content;
+    border-radius: 2em;
+    display: none;
+    z-index: 99;
+  }
+  
+  #modal.active {
+    display: block;
+  }
+  
+  #modal div {
+    position: relative;
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+  
+  
+  #modal .info-title {
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+  
+  #modal .info-year {
+    font-size: 1.5em;
+  }
+  
+  #modal .info {
+    font-size: 1.2em;
+  }
+  
+  #modal .info-code {
+    font-size: 1.1em;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  #modal .info-code span {
+    display: inline-block;
+    width: 65%;
+  }
+  
+  #modal .info-code span.code-label {
+    font-size: 0.9em;
+    display: inline-block;
+    width: 34%;
+  }
+
+@media print {
+    * {
+        print-color-adjust: exact; 
+        overflow: visible;
+    }
+
+    #vis-container {
+        overflow: visible;
+    }
+
+    #modal {
+        display: none;
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CV TUI Review - Visualization</title>
+
+    <link rel="stylesheet" href="./vis_style.css" />
+    <script src="./data.js" defer></script>
+    <script src="./vis_script.js" defer></script>
+  </head>
+  <body>
+    <div id="menu">
+      <div id="menu-container">
+        <div class="menu-item">
+          <div class="button" id="sort-year">Sort by Year</div> 
+          <div class="button" id="sort-type">Sort by Type</div>
+          <div class="button" id="filter-btn">Filter</div>
+          <div id="filter-info">
+            
+          </div>
+          <div class="button" id="clear-filter-btn">Clear Filters</div>
+        </div>
+        <div class="menu-item" id="filter-bar">
+          
+        </div>
+      </div>
+    </div>
+    
+    <div id="vis-container">
+      <div id="vis">
+        <div id="vis-labels"></div>
+      </div>
+    </div>
+    
+    <div id="modal">
+    </div>
+    
+  </body>
+</html>
